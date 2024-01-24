@@ -1,0 +1,16 @@
+{
+    "swell" : {
+        "depositContract" : "0xf951E335afb289353dc249e82926178EaC7DEd78",
+        "tokenAddress" : "0xf951E335afb289353dc249e82926178EaC7DEd78"
+    },
+
+    "eigen" : {
+        "depositContract" : "0x858646372CC42E1A627fcE94aa7A7033e7CF075A",
+        "strategy" : {
+            "sweth" : "0x0Fe4F44beE93503346A3Ac9EE5A26b130a5796d6"
+        }
+    }
+
+
+
+}
