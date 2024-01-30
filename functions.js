@@ -162,7 +162,7 @@ export async function withdrawOKX(apiKey, secret, pass, token, amount, address, 
             await delayTx(3600,3600)
         }
     }
-    await delayTx(400,600)
+    await delayTx(100,100)
 }
 
 

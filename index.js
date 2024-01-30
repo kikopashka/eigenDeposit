@@ -43,7 +43,8 @@ for(let i = 0; i < accounts.length; i++){
         await eigenDepositSwell(pk)
         await randomDelay(general.minDelayAfterAction, general.maxDelayAfterAction)
     }
-    logger.info(`----${wallet.address} proccessed ----`)
+    logger.info(`----${i+1}/${accounts.length} proccessed ----`)
+    console.log(`h`)
     await randomDelay(general.minDelayAfterWallet, general.maxDelayAfterWallet)
 }catch(e){
     console.log(e)
