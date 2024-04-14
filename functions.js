@@ -160,6 +160,8 @@ export async function withdrawOKX(apiKey, secret, pass, token, amount, address, 
         }else if(e.name == 'ExchangeError'){
             logger.error(`Withdrawals suspended in ${network} network, Waiting 1 hour...`)
             await delayTx(3600,3600)
+        }else{
+            logger.error(`There is unknown problem with OKX withdraw: ${e}`)
         }
     }
     await delayTx(100,100)
