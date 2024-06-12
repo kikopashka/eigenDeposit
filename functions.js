@@ -239,3 +239,47 @@ export async function randomDelay(min, max) {
     logger.info(`Delay ${number / 1000} started...`)
     await delay(number)
 }
+
+
+
+
+
+
+export async function undelegate(key){
+    try{
+        const provider = new ethers.JsonRpcProvider(general.rpc)
+        const wallet = new ethers.Wallet(key, provider)
+        const undelegateContract = new ethers.Contract(config.eigen.undelegate, abi.eigenUndelegate, provider)
+         
+        
+        const txEstimate = await undelegateContract.connect(wallet).undelegate.estimateGas(
+            wallet.address
+        )
+
+        const tx = await undelegateContract.connect(wallet).undelegate(
+            wallet.address
+        )        
+        
+        await tx.wait()
+        logger.info(`Wrapped ETH was undelegated from Eigen - ${tx.hash}`)
+        
+        
+    }catch(e){
+        logger.info(`Unknown problem with indelegate - ${e}`)
+    }
+}
+
+
+export async function eigenWithdrawToken(key){
+    try{
+        const provider = new ethers.JsonRpcProvider(general.rpc)
+        const wallet = new ethers.Wallet(key, provider)
+         
+
+
+
+        const txEstimate = 1
+    }catch(e){
+
+    }
+}

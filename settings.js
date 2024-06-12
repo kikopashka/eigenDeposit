@@ -1,5 +1,5 @@
 export class general {
-    static shufle = true              //перемешать ли позиции кошельков между собой?
+    static shufle = false              //перемешать ли позиции кошельков между собой?
     static rpc = "https://eth.llamarpc.com"        //RPC Ethereum можно вставить любую
     static apikey = ""                             //api ключ для вывода с OKX
     static secret = ""                             //secret для вывода с OKX
@@ -16,4 +16,5 @@ export class general {
     static swellDeposit = false
     static approve = false                         //делается апрув для контракта ейгена, апрувит сумму на 10% больше баланса
     static eigenDeposit = false
+    static undelegate = false
 }

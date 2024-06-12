@@ -6,6 +6,7 @@
 
     "eigen" : {
         "depositContract" : "0x858646372CC42E1A627fcE94aa7A7033e7CF075A",
+        "undelegate" : "0x39053D51B77DC0d36036Fc1fCc8Cb819df8Ef37A",
         "strategy" : {
             "sweth" : "0x0Fe4F44beE93503346A3Ac9EE5A26b130a5796d6"
         }

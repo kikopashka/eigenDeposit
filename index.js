@@ -1,8 +1,9 @@
 import fs from "fs"
 import { ethers } from "ethers"
-import { swellDeposit, approveForEigen, eigenDepositSwell, withdrawOKX, logger, getRandomAmountCex, gasPriceL1, randomDelay } from "./functions.js";
+import { swellDeposit, approveForEigen, eigenDepositSwell, withdrawOKX, logger, getRandomAmountCex, gasPriceL1, randomDelay, undelegate } from "./functions.js";
 import { general } from "./settings.js"
 import _ from "lodash"
+
 
 
 fs.writeFileSync('logs.log', '');
@@ -19,7 +20,7 @@ for(let i = 0; i < accounts.length; i++){
     const provider = new ethers.JsonRpcProvider(general.rpc)
     const wallet = new ethers.Wallet(pk, provider)
     
-    logger.info(`Starting procces wallet ${i+1}/${accounts.length+1} - ${wallet.address}`)
+    logger.info(`Starting procces wallet ${i+1}/${accounts.length} - ${wallet.address}`)
 
     if(general.cex){
         let amount = getRandomAmountCex(general.minAmount, general.maxAmount)
@@ -43,8 +44,14 @@ for(let i = 0; i < accounts.length; i++){
         await eigenDepositSwell(pk)
         await randomDelay(general.minDelayAfterAction, general.maxDelayAfterAction)
     }
-    logger.info(`----${i+1}/${accounts.length} proccessed ----`)
-    console.log(`h`)
+
+    if(general.undelegate){
+        await gasPriceL1()
+        await undelegate(pk)
+        await randomDelay(general.minDelayAfterAction, general.maxDelayAfterAction)
+    }
+    logger.info(`----${i+1}/${accounts.length+1} proccessed ----`)
+    console.log(``)
     await randomDelay(general.minDelayAfterWallet, general.maxDelayAfterWallet)
 }catch(e){
     console.log(e)
